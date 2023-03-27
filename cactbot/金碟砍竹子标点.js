@@ -2,20 +2,20 @@
 
 // 场地中心 (70.5625, -49.6561)，安全点半径 13.6 m
 const centerX = 70.5625;
-const centerY = -49.6561;
+const centerY = -35.9561;
 const centerZ = -4.474;
 const radius = 13.6;
 
 function checkRay(bamboo, point) {
   // type = "9": 朝着面向正左方，宽度 5.3 m 的射线攻击
-  const distanceToLine = abs(cos(bamboo.Heading)*(point.x-bamboo.PosX) - sin(bamboo.Heading)*(point.y-bamboo.PosY))
-  const dotProduct = sin(bamboo.Heading)*(point.x-bamboo.PosX) + cos(bamboo.Heading)*(point.y-bamboo.PosY)
+  const distanceToLine = Math.abs(Math.sin(bamboo.Heading)*(point.x-bamboo.PosX) + Math.cos(bamboo.Heading)*(point.y-bamboo.PosY))
+  const dotProduct = Math.cos(bamboo.Heading)*(point.x-bamboo.PosX) - Math.sin(bamboo.Heading)*(point.y-bamboo.PosY)
   return distanceToLine <= 2.65 && dotProduct > 0;
 }
 
 function checkLine(bamboo, point) {
   // type = "A": 垂直于面向，宽度 5.3 m 的直线攻击
-  const distanceToLine = abs(cos(bamboo.Heading)*(point.x-bamboo.PosX) - sin(bamboo.Heading)*(point.y-bamboo.PosY))
+  const distanceToLine = Math.abs(Math.sin(bamboo.Heading)*(point.x-bamboo.PosX) + Math.cos(bamboo.Heading)*(point.y-bamboo.PosY))
   return distanceToLine <= 2.65;
 }
 
@@ -40,7 +40,7 @@ function getUnsafeSpots(bamboo, data) {
     };
 
     const isUnsafe = checkUnsafeFunc(bamboo, point);
-
+    callOverlayHandler({ call: "PostNamazu", c: "command", p: `/cwl1 type=${bamboo.castType}, i=${i}, unsafe=${isUnsafe}` });
     // 如果对应点不安全，把 data.spots 列表中对应位置设置为 0，代表不安全
     if (isUnsafe) {
       data.spots[i] = 0;
@@ -57,30 +57,12 @@ Options.Triggers.push({
   },
   triggers: [
     {
-      id: 'myTest1',
-      regex: /^.{15}\S+ 00:0039::bamboo$/,
-      promise: async (data, matches) => {	
-        const entities = await callOverlayHandler({
-            call: 'getCombatants',
-            ids:[parseInt(matches.id, 16)],
-        });
-        const a = entities.combatants[0];
-        callOverlayHandler({ call: "PostNamazu", c: "command", p: "/cwl1 " + a.PosX});
-        console.log(a.PosX);
-      },
-      run: () => {
-        callOverlayHandler({ call: "PostNamazu", c: "command", p: "/e <se.2>"});
-        
-      },
-    },
-    {
       id: 'Bamboo_Initialize',
       suppressSeconds: 3,
-      regex: /^.{15}\S+ 00:0:101:.{8}:0005:.{4}:1EAE9[9AB]:/,
+      regex: /^.{15}\S+ 00:0:101:.{8}:0005:.{4}:1EAE9[9AB]:|^.{15}\S+ 00:0038::bamboo init$/,
       run: (data) => {
         data.spots = new Array(12).fill(1);
-        data.bamboos = [];
-        callOverlayHandler({ call: "PostNamazu", c: "command", p: "/cwl1 [初始化]" });
+        callOverlayHandler({ call: "PostNamazu", c: "command", p: "/cwl1 Bamboo_Initialize 初始化" });
       },
     },
     {
@@ -88,7 +70,6 @@ Options.Triggers.push({
       delaySeconds: 1, //等待初始化
       regex: /^.{15}\S+ 00:0:101:(?<id>.{8}):0005:.{4}:1EAE9(?<type>[9AB]):/,
       promise: async (data, matches) => {	
-
         //获取本次触发的竹子实体信息，存入 bamboo
         const bambooResult = await callOverlayHandler({
             call: 'getCombatants',
@@ -96,7 +77,7 @@ Options.Triggers.push({
         });
         const bamboo = bambooResult.combatants[0];
         bamboo.castType = matches.type;
-        
+        callOverlayHandler({ call: "PostNamazu", c: "command", p: `/cwl1 ${bamboo.castType} ${bamboo.PosX},${bamboo.PosY},${bamboo.Heading}`});
         // 根据这根竹子的伤害范围，将 data.spots 中的危险点设为 0
         getUnsafeSpots(bamboo, data);
       },
@@ -111,7 +92,7 @@ Options.Triggers.push({
         const safeSpotIndexes = data.spots
           .map((spot, i) => (spot === 1 ? i : -1))
           .filter(spot => spot !== -1);
-    
+        callOverlayHandler({ call: "PostNamazu", c: "command", p: `/cwl1 len: ${safeSpotIndexes.length}`});
         const selectedSpotIndexes = [];
 
         if (safeSpotIndexes.length <= 8) {
@@ -147,7 +128,7 @@ Options.Triggers.push({
           waymark[labels[i]] = {};
         }
 
-        callOverlayHandler({call: "PostNamazu", c: "waymark", p: JSON.stringify(waymark)});
+        callOverlayHandler({call: "PostNamazu", c: "place", p: JSON.stringify(waymark)});
       },
     },
   ],
