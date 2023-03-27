@@ -7,7 +7,7 @@ const centerZ = -4.474;
 const radius = 13.6;
 
 function checkRay(bamboo, point) {
-  // type = "9": 朝着面向正左方，宽度 5.3 m 的直线攻击
+  // type = "9": 朝着面向正左方，宽度 5.3 m 的射线攻击
   const distanceToLine = abs(cos(bamboo.Heading)*(point.x-bamboo.PosX) - sin(bamboo.Heading)*(point.y-bamboo.PosY))
   const dotProduct = sin(bamboo.Heading)*(point.x-bamboo.PosX) + cos(bamboo.Heading)*(point.y-bamboo.PosY)
   return distanceToLine <= 2.65 && dotProduct > 0;
