@@ -1,6 +1,6 @@
 /**
  * 金碟砍竹子安全点计算
- * @since 1.1.1, 2023-3-29
+ * @since 1.1.2, 2023-3-29
  * @author MnFeN
  * 
  * 运行需求：
@@ -45,27 +45,36 @@ const centerZ = -4.474;
 const radius = 13.6;
 const spotCount = 36;
 const circleArray = [
-    [-1, -1, -1, -1, 02, 01, 00, 35, 34, -1, -1, -1, -1],
-    [-1, -1, 04, 03, -1, -1, -1, -1, -1, 33, 32, -1, -1],
-    [-1, 05, -1, -1, -1, -1, -1, -1, -1, -1, -1, 31, -1],
-    [-1, 06, -1, -1, -1, -1, -1, -1, -1, -1, -1, 30, -1],
-    [07, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 29],
-    [08, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 28],
-    [09, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 27],
-    [10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 26],
-    [11, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
-    [-1, 12, -1, -1, -1, -1, -1, -1, -1, -1, -1, 24, -1],
-    [-1, 13, -1, -1, -1, -1, -1, -1, -1, -1, -1, 23, -1],
-    [-1, -1, 14, 15, -1, -1, -1, -1, -1, 21, 22, -1, -1],
-    [-1, -1, -1, -1, 16, 17, 18, 19, 20, -1, -1, -1, -1],
+  [-1, -1, -1, -1,  2,  1,  0, 35, 34, -1, -1, -1, -1],
+  [-1, -1,  4,  3, -1, -1, -1, -1, -1, 33, 32, -1, -1],
+  [-1,  5, -1, -1, -1, -1, -1, -1, -1, -1, -1, 31, -1],
+  [-1,  6, -1, -1, -1, -1, -1, -1, -1, -1, -1, 30, -1],
+  [ 7, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 29],
+  [ 8, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 28],
+  [ 9, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 27],
+  [10, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 26],
+  [11, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 25],
+  [-1, 12, -1, -1, -1, -1, -1, -1, -1, -1, -1, 24, -1],
+  [-1, 13, -1, -1, -1, -1, -1, -1, -1, -1, -1, 23, -1],
+  [-1, -1, 14, 15, -1, -1, -1, -1, -1, 21, 22, -1, -1],
+  [-1, -1, -1, -1, 16, 17, 18, 19, 20, -1, -1, -1, -1],
 ]
 
 function mod(a, b) {
   return ((a % b) + b) % b;
 }
 async function log(message) {
-  callOverlayHandler({ call: "PostNamazu", c: "command", p: `/${channel} ${message}`});
+  //callOverlayHandler({ call: "PostNamazu", c: "command", p: `/${channel} ${message}` });
   console.log(`[LOG] ${message}`);
+}
+
+async function getSelf(data) {
+  const myResult = await callOverlayHandler({
+    call: 'getCombatants',
+    names: [data.me],
+  });
+  const me = myResult.combatants[0];
+  return me;
 }
 
 function drawCircle(data) {
@@ -76,23 +85,23 @@ function drawCircle(data) {
       if (index === -1) {
         rowResult += '　 '; // 全角空格
       } else {
-        rowResult += data.spots[index] === 1 ? '● ' : '○ ';
+        rowResult += data.spots[index] === 1 ? '● ' : '◯ ';
       }
     });
     queue.push({ c: "command", p: `/${channel} ${rowResult}` });
   });
-  callOverlayHandler({call: "PostNamazu", c: "queue", p: JSON.stringify(queue)});
+  callOverlayHandler({ call: "PostNamazu", c: "queue", p: JSON.stringify(queue) });
 }
 
 function checkRay(bamboo, point) {
   // type = "9": 朝着面向正左方，宽度 5.4 m 的射线攻击 （为了站位容错，判定宽度改为 6 m）
-  const distanceToLine = Math.abs(Math.sin(bamboo.Heading)*(point.x-bamboo.PosX) + Math.cos(bamboo.Heading)*(point.y-bamboo.PosY))
-  const dotProduct = Math.cos(bamboo.Heading)*(point.x-bamboo.PosX) - Math.sin(bamboo.Heading)*(point.y-bamboo.PosY)
+  const distanceToLine = Math.abs(Math.sin(bamboo.Heading) * (point.x - bamboo.PosX) + Math.cos(bamboo.Heading) * (point.y - bamboo.PosY))
+  const dotProduct = Math.cos(bamboo.Heading) * (point.x - bamboo.PosX) - Math.sin(bamboo.Heading) * (point.y - bamboo.PosY)
   return distanceToLine <= 3 && dotProduct > 0;
 }
 function checkLine(bamboo, point) {
   // type = "A": 垂直于面向，宽度 5.4 m 的直线攻击 （为了站位容错，判定宽度改为 6 m）
-  const distanceToLine = Math.abs(Math.sin(bamboo.Heading)*(point.x-bamboo.PosX) + Math.cos(bamboo.Heading)*(point.y-bamboo.PosY))
+  const distanceToLine = Math.abs(Math.sin(bamboo.Heading) * (point.x - bamboo.PosX) + Math.cos(bamboo.Heading) * (point.y - bamboo.PosY))
   return distanceToLine <= 3;
 }
 function checkCircle(bamboo, point) {
@@ -126,19 +135,14 @@ function getUnsafeSpots(bamboo, data) { //根据给定竹子实体计算哪些�
   }
 }
 
-async function initializeBamboo(data) {
-  const myResult = await callOverlayHandler({
-    call: 'getCombatants',
-    names:[data.me],
-  })
-  data.self = myResult.combatants[0];
+function initializeBamboo(data) {
   data.spots = new Array(spotCount).fill(1);
 }
 
 async function processBamboo(data, decID, type) {
   const bambooResult = await callOverlayHandler({
     call: 'getCombatants',
-    ids:[decID],
+    ids: [decID],
   });
   const bamboo = bambooResult.combatants[0];
   bamboo.castType = type;
@@ -146,63 +150,59 @@ async function processBamboo(data, decID, type) {
 }
 
 async function processSpots(data, matches) {
-    // 获取自身位置，判断自身顺时针方向的点序号
-    const myResult = await callOverlayHandler({
-        call: 'getCombatants',
-        names:[data.me],
-    })
-    const dX = data.self.PosX - centerX;
-    const dY = data.self.PosY - centerY;
-    const myAngle = (dX === 0 && dY === 0) ? data.self.Heading : Math.atan2(dX, dY);
-    const myCWIndex = Math.floor((myAngle / Math.PI + 1) / 2 * spotCount);
-    
-    // 顺逆各取最近的四个安全点
-    const CWSpotIndexes = [];
-    const CCWSpotIndexes = [];
-    let CWIndex = myCWIndex;
-    let CCWIndex = mod(myCWIndex + 1, spotCount);
-    while (CWSpotIndexes.length < 4) {
-        if (data.spots[CWIndex] === 1) {
-        CWSpotIndexes.push(CWIndex);
-        }
-        CWIndex = mod(CWIndex - 1, spotCount);
+  // 获取自身位置，判断自身顺时针方向的点序号
+  const me = await getSelf(data);
+  const dX = me.PosX - centerX;
+  const dY = me.PosY - centerY;
+  const myAngle = (dX === 0 && dY === 0) ? me.Heading : Math.atan2(dX, dY);
+  const myCWIndex = Math.floor((myAngle / Math.PI + 1) / 2 * spotCount);
+
+  // 顺逆各取最近的四个安全点
+  const CWSpotIndexes = [];
+  const CCWSpotIndexes = [];
+  let CWIndex = myCWIndex;
+  let CCWIndex = mod(myCWIndex + 1, spotCount);
+  while (CWSpotIndexes.length < 4) {
+    if (data.spots[CWIndex] === 1) {
+      CWSpotIndexes.push(CWIndex);
     }
-    while (CCWSpotIndexes.length < 4) {
-        if (data.spots[CCWIndex] === 1) {
-        CCWSpotIndexes.push(CCWIndex);
-        }
-        CCWIndex = mod(CCWIndex + 1, spotCount);
+    CWIndex = mod(CWIndex - 1, spotCount);
+  }
+  while (CCWSpotIndexes.length < 4) {
+    if (data.spots[CCWIndex] === 1) {
+      CCWSpotIndexes.push(CCWIndex);
     }
+    CCWIndex = mod(CCWIndex + 1, spotCount);
+  }
 
-    const CWWaymarks = {};
-    const CCWWaymarks = {};
-    const CWLabels = ["A", "B", "C", "D"];
-    const CCWLabels = ["One", "Two", "Three", "Four"];
+  const CWWaymarks = {};
+  const CCWWaymarks = {};
+  const CWLabels = ["A", "B", "C", "D"];
+  const CCWLabels = ["One", "Two", "Three", "Four"];
 
-    CWSpotIndexes.forEach((spotIndex, i) => {
-        const point = getPointByIndex(spotIndex);
-        CWWaymarks[CWLabels[i]] = {
-        X: point.x,
-        Y: centerZ,
-        Z: point.y,
-        Active: true,
-        };
-    });
-    CCWSpotIndexes.forEach((spotIndex, i) => {
-        const point = getPointByIndex(spotIndex);
-        CCWWaymarks[CCWLabels[i]] = {
-        X: point.x,
-        Y: centerZ,
-        Z: point.y,
-        Active: true,
-        };
-    });
+  CWSpotIndexes.forEach((spotIndex, i) => {
+    const point = getPointByIndex(spotIndex);
+    CWWaymarks[CWLabels[i]] = {
+      X: point.x,
+      Y: centerZ,
+      Z: point.y,
+      Active: true,
+    };
+  });
+  CCWSpotIndexes.forEach((spotIndex, i) => {
+    const point = getPointByIndex(spotIndex);
+    CCWWaymarks[CCWLabels[i]] = {
+      X: point.x,
+      Y: centerZ,
+      Z: point.y,
+      Active: true,
+    };
+  });
 
-    const waymarks = {...CWWaymarks, ...CCWWaymarks};
-    await callOverlayHandler({call: "PostNamazu", c: "command", p: "/e <se.10>"}); //发送提示音
-    callOverlayHandler({call: "PostNamazu", c: "place", p: JSON.stringify(waymarks)}); //发送标点
-    drawCircle(data); //发送字符画文本播报
-
+  const waymarks = { ...CWWaymarks, ...CCWWaymarks };
+  await callOverlayHandler({ call: "PostNamazu", c: "command", p: "/e <se.10>" }); //发送提示音
+  callOverlayHandler({ call: "PostNamazu", c: "place", p: JSON.stringify(waymarks) }); //发送标点
+  drawCircle(data); //发送字符画文本播报
 }
 
 Options.Triggers.push({
@@ -225,16 +225,17 @@ Options.Triggers.push({
       id: 'Bamboo_Cast',
       delaySeconds: 1, //等待初始化
       regex: /^.{15}\S+ 00:0:101:(?<ID>.{8}):0005:.{4}:1EAE9(?<type>[9AB]):/,
-      promise: async (data, matches) => {	
+      promise: async (data, matches) => {
         await processBamboo(data, parseInt(matches.ID, 16), matches.type);
       },
     },
-    { 
+    {
       id: 'Bamboo_Cast_Test',
       delaySeconds: 1, //等待初始化
       regex: /^.{15}\S+ 00:0038::bamboo (?<type>[9AB])$/,
-      promise: async (data, matches) => {	
-        await processBamboo(data, data.self.ID, matches.type);
+      promise: async (data, matches) => {
+        const me = await getSelf(data);
+        await processBamboo(data, me.ID, matches.type);
         await log(`spots = ${data.spots}`);
       },
     },
@@ -243,7 +244,7 @@ Options.Triggers.push({
       suppressSeconds: 3,
       delaySeconds: 3,
       regex: /^.{15}\S+ 00:0:101:.{8}:0005:.{4}:1EAE9[9AB]:|^.{15}\S+ 00:0038::bamboo/,
-      promise: async (data, matches) => {	
+      promise: async (data, matches) => {
         await processSpots(data);
       },
     },
