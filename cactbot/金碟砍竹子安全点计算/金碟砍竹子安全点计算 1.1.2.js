@@ -248,6 +248,35 @@ Options.Triggers.push({
         await processSpots(data);
       },
     },
+    {
+      id: 'Bamboo_Evade_Dog',
+      regex: /^.{15}\S+ 00:0:105:(?<ID>4.{7}):0005:00:00:00:70.56:-43.46:-4.49::/,
+      promise: async (data, matches) => {
+        const dogResult = await callOverlayHandler({
+          call: 'getCombatants',
+          ids: [parseInt(matches.ID, 16)],
+        });
+        const dog = dogResult.combatants[0];
+        const offsetDistance = 1
+        const dX = dog.PosX - centerX;
+        const dY = dog.PosY - centerY;
+        const distance = Math.sqrt(Math.pow(dX, 2) + Math.pow(dY, 2));
+        if (distance < 8) {
+          const unitVectorX = dX / distance;
+          const unitVectorY = dY / distance;
+          const safeX = centerX - (unitVectorX * offsetDistance);
+          const safeY = centerY - (unitVectorY * offsetDistance);
+          waymark = { A:{
+            X: safeX,
+            Y: centerZ,
+            Z: safeY,
+            Active: true,
+          }}
+          callOverlayHandler({ call: "PostNamazu", c: "place", p: JSON.stringify(waymarks) });
+          callOverlayHandler({ call: "PostNamazu", c: "command", p: `/e <se.10>` });
+        }
+      },
+    },
   ],
 });
 
