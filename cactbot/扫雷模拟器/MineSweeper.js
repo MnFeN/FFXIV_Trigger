@@ -198,7 +198,7 @@ Options.Triggers.push({
         {   id: 'MineSweeper_Start', // 重新开局
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper start/,
-            promise: async (data) => {
+            promise: async () => {
                 // 初始化地雷分布（-1: 雷; 0-8: 周围雷数）
                 game.resetMine();
                 await game.resetStatus();
@@ -208,14 +208,14 @@ Options.Triggers.push({
         {   id: 'MineSweeper_Replay', // 重新开局 但不刷新地雷分布
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper replay/,
-            promise: async (data) => {
+            promise: async () => {
                 await game.resetStatus();
             },
         },
         {   id: 'Minesweeper_RevealCell', // 点击翻开某个格子
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper (?<x>\d+) (?<y>\d+)$/,
-            condition: function(data) { return !game.useFlag && !game.endGame },
+            condition: function() { return !game.useFlag && !game.endGame },
             promise: async (data, matches) => {
                 const x = parseInt(matches.x) - 1;
                 const y = parseInt(matches.y) - 1;
@@ -229,7 +229,7 @@ Options.Triggers.push({
         {   id: 'Minesweeper_FlagCell', // 点击标记某个格子
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper (?<x>\d+) (?<y>\d+)$/,
-            condition: function(data) { return game.useFlag && !game.endGame },
+            condition: function() { return game.useFlag && !game.endGame },
             promise: async (data, matches) => {
                 const x = parseInt(matches.x) - 1;
                 const y = parseInt(matches.y) - 1;
@@ -252,8 +252,8 @@ Options.Triggers.push({
         {   id: 'Minesweeper_UndoFlagCell', // 取消上一次的标记
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper undo$/,
-            condition: function(data) { return game.currentMineCount < game.mineCount && !game.endGame },
-            promise: async (data) => {
+            condition: function() { return game.currentMineCount < game.mineCount && !game.endGame },
+            promise: async () => {
                 game.currentMineCount += 1;
                 let [x, y] = game.flags.pop();
                 game.state[x][y] = 0;
@@ -292,7 +292,7 @@ Options.Triggers.push({
         {   id: 'Minesweeper_UseFlag', // 启用/解除标记模式
             suppressSeconds: 0,
             regex: /^.{15}\S+ 00:0038::minesweeper flag$/,
-            promise: async (data) => {
+            promise: async () => {
                 game.useFlag = !game.useFlag;
                 game.showCurrentTool();
             },
