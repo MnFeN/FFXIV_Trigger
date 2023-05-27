@@ -1,0 +1,449 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder Id="d879a9f1-ae52-4b06-8f92-91899ed87feb" Name="极高贝扎完整版 v1.31 by MnFeN" Enabled="true">
+    <Folders>
+      <Folder Id="6e8c7ecd-8e05-441f-94ec-9fe9f2043e9a" Name="风球" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="0. 初始化" Id="df0c597a-2032-4824-aef3-cf5259c56fd4" RegularExpression="^.{15}\S+ 104:">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="^Golbez_Sphere" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ListVariableOp="UnsetRegex" ListVariableName="^Golbez_Sphere" ActionType="ListVariable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="2. 计算安全点" Id="32651945-e60e-4f34-b9e3-e32b17ed8e41" RegularExpression="^Golbez_Sphere:getSafeSpots$" PrevActionsRefire="Deny" PeriodRefire="Deny" RefirePeriodExpression="5000" Description="[02:37:06.242] StartsCasting 14:40021C81:Golbez:844D:Gale Sphere:40021C81:Golbez:2.700:99.99:99.99:0.03:-3.11&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C78:Heading:-3.1416:PosX:87.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C7A:Heading:-3.1416:PosX:92.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C73:Heading:1.5704:PosX:85.0000:PosY:112.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C79:Heading:-3.1416:PosX:97.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C72:Heading:1.5704:PosX:85.0000:PosY:102.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C7B:Heading:-3.1416:PosX:102.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C71:Heading:1.5704:PosX:85.0000:PosY:107.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C70:Heading:1.5704:PosX:85.0000:PosY:97.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C6F:Heading:-1.5705:PosX:115.0000:PosY:87.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C6E:Heading:-1.5705:PosX:115.0000:PosY:97.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C6D:Heading:-1.5705:PosX:115.0000:PosY:92.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C6C:Heading:-1.5705:PosX:115.0000:PosY:102.5000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C75:Heading:0.0000:PosX:92.5000:PosY:85.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C77:Heading:0.0000:PosX:87.5000:PosY:85.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C74:Heading:0.0000:PosX:112.5000:PosY:85.0000:PosZ:0.0300&#xD;&#xA;[02:37:16.411] 261 105:Change:40021C76:Heading:0.0000:PosX:107.5000:PosY:85.0000:PosZ:0.0300&#xD;&#xA;[02:41:52.615] StartsCasting 14:40021C81:Golbez:844D:Gale Sphere:40021C81:Golbez:2.700:99.99:99.99:0.03:3.11&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C7B:Heading:-3.1416:PosX:112.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C79:Heading:-3.1416:PosX:107.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C7A:Heading:-3.1416:PosX:102.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C78:Heading:-3.1416:PosX:97.5000:PosY:115.0000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C73:Heading:-1.5705:PosX:115.0000:PosY:87.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C72:Heading:-1.5705:PosX:115.0000:PosY:97.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C71:Heading:-1.5705:PosX:115.0000:PosY:92.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.704] 261 105:Change:40021C70:Heading:-1.5705:PosX:115.0000:PosY:102.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.824] 261 105:Change:40021C6F:Heading:1.5704:PosX:85.0000:PosY:112.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.824] 261 105:Change:40021C6E:Heading:1.5704:PosX:85.0000:PosY:102.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.824] 261 105:Change:40021C6D:Heading:1.5704:PosX:85.0000:PosY:107.5000:PosZ:0.0300&#xD;&#xA;[02:42:02.824] 261 105:Change:40021C6C:Heading:1.5704:PosX:85.0000:PosY:97.5000:PosZ:0.0300&#xD;&#xA;">
+            <Actions>
+              <Action OrderNumber="1" ActionType="Placeholder" Description="禁止重复触发；描述里有测试日志" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ActionType="SystemBeep">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" ListVariableOp="SortAlphaDesc" ListVariableName="Golbez_Sphere" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="Golbez_Sphere_safe1" VariableExpression="(18 - ${func:substring(9,1):${lvar:Golbez_Sphere[1]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[2]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[3]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[4]}}) / 4" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" VariableOp="SetNumeric" VariableName="Golbez_Sphere_safe2" VariableExpression="(18 - ${func:substring(9,1):${lvar:Golbez_Sphere[5]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[6]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[7]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[8]}}) / 4" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" VariableOp="SetNumeric" VariableName="Golbez_Sphere_safe3" VariableExpression="(18 - ${func:substring(9,1):${lvar:Golbez_Sphere[9]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[10]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[11]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[12]}}) / 4" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" VariableOp="SetNumeric" VariableName="Golbez_Sphere_safe4" VariableExpression="(18 - ${func:substring(9,1):${lvar:Golbez_Sphere[13]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[14]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[15]}} - ${func:substring(9,1):${lvar:Golbez_Sphere[16]}}) / 4" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="8" UseTTSTextExpression="${func:substring(${var:Golbez_Sphere_safe1},1):左中右}穿${func:substring(${var:Golbez_Sphere_safe2},1):左中右}，然后${func:substring(${var:Golbez_Sphere_safe3},1):上中下}穿${func:substring(${var:Golbez_Sphere_safe4},1):上中下}" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="9" UseTTSTextExpression="${func:substring(${var:Golbez_Sphere_safe3},1):上中下}穿${func:substring(${var:Golbez_Sphere_safe4},1):上中下}" ActionType="UseTTS" ExecutionDelayExpression="7000" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="10" VariableOp="UnsetRegex" VariableName="^Golbez_Sphere" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="1. 检测实体" Id="543046d2-8376-4056-8c0b-f764781369e0" RegularExpression="^.{15}\S+ 105:Change:(?&lt;id&gt;4.{7}):Heading:[^:]+:PosX:(?&lt;x&gt;85\.0000|115\.0000|\d+[27]\.5000):PosY:(?&lt;y&gt;85\.0000|115\.0000|\d+[27]\.5000):">
+            <Actions>
+              <Action OrderNumber="1" ActionType="Placeholder" Description="一共 16 个实体，每边四个（两组），位于这条边的左中右三组可能位置" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ActionType="Placeholder" Description="id 顺序决定施放顺序：id 最大的四个最快 " DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" ActionType="Placeholder" Description="temp_pos：每条边从左到右1-6" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetNumeric" VariableName="temp_pos" VariableExpression="(${x}-82.5)/5 * if(abs(${x}-100) = 15,0,1) + (${y}-82.5)/5 * if(abs(${y}-100) = 15,0,1)" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="5" ActionType="Placeholder" Description="若已记录16个实体（第二次或第三次风球）：刷新位置（触发器循环有时序 bug，凑合写一下）" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="6" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="1" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[1]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="7" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="2" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[2]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="8" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="3" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[3]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="9" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="4" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[4]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="10" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="5" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[5]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="11" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="6" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[6]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="12" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="7" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[7]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="13" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="8" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[8]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="14" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="9" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[9]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="15" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="10" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[10]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="16" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="11" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[11]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="17" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="12" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[12]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="18" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="13" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[13]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="19" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="14" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[14]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="20" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="15" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[15]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="21" ListVariableOp="Set" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ListVariableIndex="16" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${func:substring(0,8):${lvar:Golbez_Sphere[16]}}" ExpressionTypeL="String" ExpressionR="${id}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="22" ActionType="Placeholder" Description="若不满16个实体（第一次风球）：记录位置" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="23" VariableOp="SetNumeric" VariableName="temp_isFinal" VariableExpression="1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="15" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="24" ListVariableOp="Push" ListVariableName="Golbez_Sphere" ListVariableExpression="${id}:${var:temp_pos}" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericLess" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="25" VariableName="temp_pos" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="26" ActionType="Placeholder" Description="第一次：满 16 个时处理数据&#xD;&#xA;" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="27" LogMessageText="Golbez_Sphere:getSafeSpots" LogProcess="True" ActionType="LogMessage" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:temp_isFinal}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="28" ActionType="Placeholder" Description="后两次：延时 500 ms 处理数据，会比用 0x14 日志行快 1-2 秒" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="29" LogMessageText="Golbez_Sphere:getSafeSpots" LogProcess="True" ActionType="LogMessage" ExecutionDelayExpression="500" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${lvar:Golbez_Sphere.size}" ExpressionTypeL="Numeric" ExpressionR="16" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="30" VariableName="temp_isFinal" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="71d2aac8-9e69-4a2e-bab0-2233f2356747" Name="踩塔" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="0. 初始化" Id="d733dacd-28ea-4241-81e3-a7f61158800f" RegularExpression="^.{15}\S+ 104:1:1">
+            <Actions>
+              <Action OrderNumber="1" VariableName="Golbez_1B_first" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" VariableOp="UnsetRegex" VariableName="^Golbez_towers" ActionType="Variable">
+                <Condition Enabled="false" Grouping="And" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="1. 获取点名" Id="c440d195-1427-4a1f-9c09-aa5e1e11f447" RegularExpression="^.{15}\S+ 1B:.{8}:(?&lt;PN&gt;[^:]+):.{9}:(?&lt;type&gt;.{4}):">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Golbez_1B_first" VariableExpression="hex2dec(${type})" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Golbez_1B_first}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="2" LogMessageText="Golbez_towers:${PN}:${numeric:hex2dec(${type}) - ${var:Golbez_1B_first} - 129}" LogProcess="True" ActionType="LogMessage">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="hex2dec(${type}) - ${var:Golbez_1B_first}" ExpressionTypeL="Numeric" ExpressionR="^(129|130)$" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="2. 播报点名" Id="b7734554-da70-4574-99b9-bf6aabd9c18e" RegularExpression="^Golbez_towers:(?&lt;PN&gt;[^:]+):(?&lt;type&gt;[01])$" Description="[06:13:45.297] TargetIcon 1B:106EA8AD:Locria Sonata:0000:0000:0158:0000:0000:0000&#xD;&#xA;&#xA;[06:13:45.297] TargetIcon 1B:10914C9B:Bun Be-nuong:0000:0000:0158:0000:0000:0000&#xD;&#xA;&#xA;[06:15:13.357] TargetIcon 1B:108CAB76:Vm Hyd:0000:0000:01DA:0000:0000:0000&#xD;&#xA;[06:15:13.446] StartsCasting 14:4000E871:Golbez:84B5:Double Meteor:4000E871:Golbez:10.700:99.99:92.48:0.03:-2.86&#xA;&#xD;&#xA;&#xA;[06:15:13.446] TargetIcon 1B:108F4C6B:Kalani Pendragon:0000:0000:01D9:0000:0000:0000&#xA;&#xD;&#xA;[06:15:13.446] TargetIcon 1B:10858EE5:Kazen Irc:0000:0000:01D9:0000:0000:0000&#xA;">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Golbez_towers_markers_n" VariableExpression="0${var:Golbez_towers_markers_n} + 1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" UseTTSTextExpression="核爆点名" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${PN}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" UseTTSTextExpression="击退点名，站中间" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${type}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${PN}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetString" VariableName="Golbez_towers_marked" VariableExpression="1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${PN}" ExpressionTypeL="String" ExpressionR="${_ffxivplayer}" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" UseTTSTextExpression="无点名，踩塔" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${evar:Golbez_towers_marked}" ExpressionTypeL="Numeric" ExpressionR="0" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Golbez_towers_markers_n}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" VariableOp="UnsetRegex" VariableName="^Golbez_towers" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Golbez_towers_markers_n}" ExpressionTypeL="Numeric" ExpressionR="3" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+      <Folder Id="52970566-4d56-48f9-b4a7-cc011ed947e9" Name="土球" Enabled="true">
+        <Folders />
+        <Triggers>
+          <Trigger Enabled="true" Name="1. 生成土球" Id="57c89fce-4319-4def-b31c-9542058bb3a0" RegularExpression="^.{15}\S+ 101:.{8}:00010004:0(?&lt;pos&gt;[89])" Description="101:80034E7A:00010004:0[9B]：土球在右上/左下&#xD;&#xA;101:80034E7A:00010004:0[8A]：土球在左上/右下&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Golbez_Terra_n" VariableExpression="0${var:Golbez_Terra_n} + 1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ActionType="Placeholder" Description="第一次：直接报&#xD;&#xA;" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="3" UseTTSTextExpression="右下，左上" VariableOp="SetString" VariableName="Golbez_Terra_safe" VariableExpression="左下，右上" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" VariableOp="SetString" VariableName="Golbez_Terra_safe" VariableExpression="右下，左上" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" UseTTSTextExpression="${var:Golbez_Terra_safe}" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Golbez_Terra_n}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" ActionType="Placeholder" Description="第一次以后：准备等待冰刺（正北顺 四个斜方向 安全：1）" DescriptionOverride="True">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" UseTTSTextExpression="右下，左上" VariableOp="SetString" VariableName="temp_safe" VariableExpression="1 0 1 0" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="8" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="8" VariableOp="SetString" VariableName="temp_safe" VariableExpression="0 1 0 1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="And">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="9" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="9" ListVariableOp="Split" ListVariableName="temp_safe" ListVariableExpression=" " ListVariableTarget="Golbez_Terra_safe" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${var:Golbez_Terra_n}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericGreater" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="10" UseTTSTextExpression="右下，左上" VariableName="temp_safe" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="And" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="0. 初始化" Id="ae6cb303-6ddb-44dc-905f-fda0e1a60b3c" RegularExpression="^.{15}\S+ 104:">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="UnsetRegex" VariableName="^Golbez_(Terra|Arctic)" ActionType="Variable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ListVariableOp="UnsetRegex" ListVariableName="^Golbez_(Terra|Arctic)" ActionType="ListVariable">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+          <Trigger Enabled="true" Name="2. 生成冰刺" Id="5ad300e2-046c-4561-a514-14f39ca82b9c" RegularExpression="^.{15}\S+ 101:.{8}:00020001:0(?&lt;pos&gt;[0-3])" Description="冰刺：&#xD;&#xA;101:80034E7A:00020001:0[0-7]&#xD;&#xA;00 北 朝左&#xD;&#xA;01 北 朝右&#xD;&#xA;02 东 朝上&#xD;&#xA;03 东 朝下 &#xD;&#xA;04 南 朝左&#xD;&#xA;05 南 朝右&#xD;&#xA;06 西 朝上&#xD;&#xA;07 西 朝下">
+            <Actions>
+              <Action OrderNumber="1" VariableOp="SetNumeric" VariableName="Golbez_Arctic_n" VariableExpression="0${var:Golbez_Arctic_n} + 1" ActionType="Variable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="2" ListVariableOp="Set" ListVariableName="Golbez_Terra_safe" ListVariableExpression="0" ListVariableIndex="1" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="1|2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="3" ListVariableOp="Set" ListVariableName="Golbez_Terra_safe" ListVariableExpression="0" ListVariableIndex="2" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="1|3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="4" ListVariableOp="Set" ListVariableName="Golbez_Terra_safe" ListVariableExpression="0" ListVariableIndex="3" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="0|3" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="5" ListVariableOp="Set" ListVariableName="Golbez_Terra_safe" ListVariableExpression="0" ListVariableIndex="4" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="true" Grouping="Or">
+                  <ConditionSingle Enabled="true" ExpressionL="${pos}" ExpressionTypeL="String" ExpressionR="0|2" ExpressionTypeR="String" ConditionType="RegexMatch" />
+                </Condition>
+              </Action>
+              <Action OrderNumber="6" UseTTSTextExpression="${func:substring(${numeric:3*${lvar:Golbez_Terra_safe.indexof(1)}-3},2):右上 右下 左下 左上 }" ActionType="UseTTS" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+              <Action OrderNumber="7" ListVariableName="Golbez_Terra_safe" ActionType="ListVariable" Asynchronous="False">
+                <Condition Enabled="false" Grouping="Or" />
+              </Action>
+            </Actions>
+            <Condition Enabled="false" Grouping="Or" />
+          </Trigger>
+        </Triggers>
+      </Folder>
+    </Folders>
+    <Triggers>
+      <Trigger Enabled="true" Name="三向/分摊" Id="a136f808-b40c-437c-9577-fc36c2360bf0" RegularExpression="^.{15}\S+ 14:4.{7}:[^:]+:(?&lt;SID&gt;848[05])">
+        <Actions>
+          <Action OrderNumber="1" UseTTSTextExpression="职能三向站位" ActionType="UseTTS" Asynchronous="False">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="8480" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Action>
+          <Action OrderNumber="2" UseTTSTextExpression="双组直线分摊" ActionType="UseTTS" Asynchronous="False">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="8485" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="躲避雷" Id="525629e4-fe0b-4d04-bd33-d0a459b2bc3f" RegularExpression="^.{15}\S+ 14:4.{7}:[^:]+:8468">
+        <Actions>
+          <Action OrderNumber="1" UseTTSTextExpression="准备躲开" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" UseTTSTextExpression="躲开" ActionType="UseTTS" ExecutionDelayExpression="3400">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="DoT AoE" Id="b54e472a-96d2-4ba1-8c47-b086ef43a962" RegularExpression="^.{15}\S+ 14:4.{7}:[^:]+:84B3">
+        <Actions>
+          <Action OrderNumber="1" UseTTSTextExpression="流血AoE" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="半场刀" Id="6f03d45d-dc3d-45b7-89b6-7d4ecbda8733" RegularExpression="^.{15}\S+ 14:4.{7}:[^:]+:86DB">
+        <Actions>
+          <Action OrderNumber="1" UseTTSTextExpression="后，然后前" ActionType="UseTTS">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="钢铁月环" Id="01405f06-60f4-44dd-ac75-5b068c36e6ad" RegularExpression="^.{15}\S+ 14:4.{7}:[^:]+:(?&lt;SID&gt;847[89]|86E7)">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetString" VariableName="Golbez_Sphere_saved" VariableExpression="钢铁分摊" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="8478" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Action>
+          <Action OrderNumber="2" VariableOp="SetString" VariableName="Golbez_Sphere_saved" VariableExpression="月环分散" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="8479" ExpressionTypeR="String" ConditionType="StringEqualNocase" />
+            </Condition>
+          </Action>
+          <Action OrderNumber="3" UseTTSTextExpression="储存${var:Golbez_Sphere_saved}" ActionType="UseTTS" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="847[89]" ExpressionTypeR="String" ConditionType="RegexMatch" />
+            </Condition>
+          </Action>
+          <Action OrderNumber="4" UseTTSTextExpression="前后刀，${var:Golbez_Sphere_saved}" ActionType="UseTTS" Asynchronous="False">
+            <Condition Enabled="true" Grouping="And">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="86E7" ExpressionTypeR="String" ConditionType="RegexMatch" />
+              <ConditionSingle Enabled="true" ExpressionL="${evar:Golbez_Sphere_saved}" ExpressionTypeL="Numeric" ExpressionR="1" ExpressionTypeR="Numeric" ConditionType="NumericEqual" />
+            </Condition>
+          </Action>
+          <Action OrderNumber="5" VariableName="Golbez_Sphere_saved" ActionType="Variable" Asynchronous="False">
+            <Condition Enabled="true" Grouping="Or">
+              <ConditionSingle Enabled="true" ExpressionL="${SID}" ExpressionTypeL="String" ExpressionR="86E7" ExpressionTypeR="String" ConditionType="RegexMatch" />
+            </Condition>
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
