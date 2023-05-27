@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <TriggernometryExport Version="1">
-  <ExportedFolder Id="d879a9f1-ae52-4b06-8f92-91899ed87feb" Name="极高贝扎完整版 v1.31 by MnFeN" Enabled="true">
+  <ExportedFolder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^1141$" Id="d879a9f1-ae52-4b06-8f92-91899ed87feb" ZoneFilterRegularExpression="by MnFeN" Name="极高贝扎完整版 v1.31 by MnFeN" Enabled="true">
     <Folders>
       <Folder Id="6e8c7ecd-8e05-441f-94ec-9fe9f2043e9a" Name="风球" Enabled="true">
         <Folders />
