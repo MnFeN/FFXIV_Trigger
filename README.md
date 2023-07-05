@@ -1,5 +1,6 @@
 # 目录
 ## Triggernometry
+· 绝欧米茄
 · 仙人微彩轮椅  
 · 钓鱼辅助 TTS  
 ## Cactbot
